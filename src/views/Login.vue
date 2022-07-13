@@ -29,10 +29,11 @@
 		data: () => ({
 			email:'',
 			password:'',
-			backend:  this.$store.state.backendUrl+`auth/token/login/`,
+			backend:  "s",
 			toast : useToast()
 		}),
 created() {
+      this.backend=  this.$store.state.backendUrl+`auth/token/login/`
 },
 	  methods: {
 
@@ -49,7 +50,7 @@ created() {
 								name: 'home', // put your route information in
 							})
 							window.location.assign(r.href)})
-						.catch(err => {console.log(err), this.toast.error("Ви неправильно ввели електронну пошту або пароль")})
+						.catch(err => {console.log(err)})
 			},
 
 

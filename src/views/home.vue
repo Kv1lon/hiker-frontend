@@ -161,7 +161,7 @@
         <div data-aos="zoom-in" data-aos-delay="300"  v-for="author in popular_authors" :key="author.id" class="col-lg-3 col-md-3 co l-sm-3" @click.prevent="goTo('profile',{slug:author.slug})">
           <img v-if="author.profile_img" :src="author.profile_img" style="border-radius: 100px;" alt="Admin" class="rounded-circle" width="150">
           <img v-else src="https://secure.gravatar.com/avatar/c9877cc06c704dbe1dd3d4f305cb22d6?s=650&d=mm&r=g" style="border-radius: 100px;" alt="Admin" class="rounded-circle" width="150">
-          <div class="btn btn-theme" >{{author.username}} <br/>Баллы:{{author.points}}<br/>Подписчики:{{author.followers.length}}</div>
+          <div class="btn btn-theme" >{{author.username}} <br/>Бали:{{author.points}}<br/>Підписники:{{author.followers.length}}</div>
         </div>
       </div>
     </div>

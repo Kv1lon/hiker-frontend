@@ -47,11 +47,11 @@
             <li v-if="isLoggedIn" ><a  href="" @click.prevent="goTo('panel',null)"><font-awesome-icon :icon="['fas', 'briefcase']" /> Робочий кабінет</a></li>
 
                         <li class="nav-item">
-              <a class="nav-link" href="" @click.prevent="goTo('tickets',)"><font-awesome-icon :icon="['fas', 'ticket-alt']" /> Білеты</a>
+              <a class="nav-link" href="" @click.prevent="goTo('tickets',)"><font-awesome-icon :icon="['fas', 'ticket-alt']" /> Білети</a>
             </li>
-            <li v-if="isLoggedIn" ><a  href="" @click.prevent="goTo('tickets_cabinet',{slug:$store.state.cuser.slug})"><font-awesome-icon :icon="['fas', 'plane-departure']" /> Мої билеты</a></li>
+            <li v-if="isLoggedIn" ><a  href="" @click.prevent="goTo('tickets_cabinet',{slug:$store.state.cuser.slug})"><font-awesome-icon :icon="['fas', 'plane-departure']" /> Мої билети</a></li>
 
-            <li v-if="!isLoggedIn"><a  href="" @click.prevent="goTo('registration',null)"><font-awesome-icon :icon="['fas', 'user-plus']"/> Регистрація</a></li>
+            <li v-if="!isLoggedIn"><a  href="" @click.prevent="goTo('registration',null)"><font-awesome-icon :icon="['fas', 'user-plus']"/> Реєстрація</a></li>
             <li v-if="!isLoggedIn"><a  href="" @click.prevent="goTo('login',null)"><font-awesome-icon :icon="['fas', 'sign-in-alt']"/> Вхід</a></li>
             <li v-if="isLoggedIn" ><a  href="" @click.prevent="goTo('profile',{slug: $store.state.cuser.slug})"><font-awesome-icon :icon="['fas', 'id-card']" /> Профіль</a></li>
             <li v-if="isLoggedIn" ><a  href="" @click.prevent="logout" ><font-awesome-icon :icon="['fas', 'sign-out-alt']"/> Вихід</a></li>

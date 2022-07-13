@@ -222,7 +222,7 @@ bounds: new google.maps.LatLngBounds(), // Авто масштабировани
                     ]
                 },
                 simpleUpload: {// The URL that the images are uploaded to.
-                    uploadUrl:  this.$store.state.backendUrl+'api/v1/upload_img/none/',
+                    uploadUrl:  "",
                     // Enable the XMLHttpRequest.withCredentials property.withCredentials: false,
                 }
             },
@@ -233,6 +233,7 @@ bounds: new google.maps.LatLngBounds(), // Авто масштабировани
             this.loadListTags()
             this.loadListCities()
             this.loadListCountries()
+          this.editorConfig.simpleUpload.uploadUrl=this.$store.state.backendUrl+'api/v1/upload_img/none/'
         },
   mounted() {
             this.initMap()

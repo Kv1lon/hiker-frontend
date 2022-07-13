@@ -234,7 +234,7 @@ import Editor from '@ckeditor/ckeditor5-simple-build';
                 },
                 simpleUpload: {
                     // The URL that the images are uploaded to.
-                    // uploadUrl: 'http://127.0.0.1:8000/api/v1/upload_img/none/',
+                    uploadUrl: '',
                     // Enable the XMLHttpRequest.withCredentials property.withCredentials: false,
                 }
             },
@@ -246,6 +246,8 @@ import Editor from '@ckeditor/ckeditor5-simple-build';
             this.loadListTags()
             this.loadListCities()
             this.loadListCountries()
+                    this.editorConfig.simpleUpload.uploadUrl=this.$store.state.backendUrl+'api/v1/upload_img/none/'
+
 
         },
       watch: {

@@ -239,7 +239,7 @@ var ops = []
             else {
             this.orl = "ADZ"
                 this.del = "AQP"
-                this.forward ="2022-02-17 12:00:00"
+                this.forward ="2022-08-17 12:00:00"
                 this.trip_class="E"
                 this.searchTickets()
         } },

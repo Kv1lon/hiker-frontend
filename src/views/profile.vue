@@ -1,6 +1,6 @@
 <template>
-<div  :style="{'background-image': 'url(' + region.background_img + ')',backgroundSize:'100%',}">
-  <div  data-aos="fade-in"  data-aos-delay="300" class="container">
+<div data-aos="fade-in" data-aos-delay="300"  :style="{'background-image': 'url(' + region.background_img + ')',backgroundSize:'100%',}">
+  <div data-aos="fade-in" data-aos-delay="300" class="container">
     <div class="main-body">
       <div class="row gutters-sm">
         <div class="col-md-4 mb-3">
@@ -57,7 +57,6 @@
                     </div>
               </div>
               <hr>
-              <hr>
               <div v-if="city.title" class="row profile_text">
                 <div class="col-sm-3">
                   <h6 class="mb-0">Адреса</h6>
@@ -103,7 +102,7 @@
     data: () => ({
       user: {},
       cur_user:{},
-      backend: this.$store.state.backendUrl+`auth/users/me/`,
+      backend:"" ,
       sub_status:"",
       followers_count:"",
       region:{},
@@ -113,6 +112,7 @@
     created() {
       this.cur_user = this.$store.state.cuser
       this.loadUser()
+      this.backend = this.$store.state.backendUrl+`auth/users/me/`
 
     },
     methods: {

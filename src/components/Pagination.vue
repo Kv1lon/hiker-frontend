@@ -21,7 +21,7 @@
             currenturl:``,
         }),
         created() {
-            this.currenturl =this.state.backendUrl+`api/v1/blog?city=&country=&date=&search=${this.searchq}&tags=`
+            this.currenturl =this.$store.state.backendUrl+`api/v1/blog?city=&country=&date=&search=${this.searchq}&tags=`
         },
         methods:{
             changePage(url){
