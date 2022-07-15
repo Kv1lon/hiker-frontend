@@ -14,7 +14,7 @@
                 <div class="form-row">
                     <label for="your-email">Пошта</label>
                     <input readonly    onfocus="this.removeAttribute('readonly')" type="email" v-model="email" name="your-email" id="your-email" class="input-text" placeholder="Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
-                    <span v-if="msg.email">{{msg.email}}</span>
+                    <div v-if="msg.email" style="color: #d58512;font-weight: bold">{{msg.email}}</div>
                 </div>
                 <div class="form-row">
                     <label for="bio">Коротко про собе</label>
@@ -35,10 +35,11 @@
                 <div class="form-row">
                     <label for="password">Пароль</label>
                     <input type="password" readonly    onfocus="this.removeAttribute('readonly')"  v-model="password" name="password" id="password" class="input-text" placeholder="Пароль" required>
-                    <span v-if="msg.password">{{msg.password}}</span>
+                    <div v-if="msg.password" style="color: #d58512;font-weight: bold">{{msg.password}}</div>
                 </div>
                 <div class="form-row-last">
-                    <input type="submit" name="register" class="register" value="Реєстрація">
+                    <input v-if="msg['email'] || msg['password']||!password||!email||!username||!city||!region" disabled type="submit" name="register" class="register btn btn-block" value="Реєстрація">
+                    <input v-else type="submit" name="register" class="register btn btn-block" value="Реєстрація">
                 </div>
             </form>
         </div>
@@ -87,15 +88,14 @@
     },
         methods: {
             register: function () {
-                if(!this.msg['email'] && !this.msg['password']){
                 const formData = new FormData();
                 if(this.city){
-                this.city = this.cities.find(x=>x.title===this.city).slug
-                                formData.append("city", this.city);}
+                var city = this.cities.find(x=>x.title===this.city).slug
+                                formData.append("city", city);}
 
                 if(this.region){
-                this.region = this.regions.find(x=>x.title===this.region).slug
-                                formData.append("region", this.region);
+                var region = this.regions.find(x=>x.title===this.region).slug
+                                formData.append("region", region);
 
                 }
                 formData.append("username", this.username);
@@ -109,11 +109,8 @@
                       this.toast.success('На Вашу пошту був відправлен лист з підтвердженням')
                       this.$router.push('/')
                     })
-                    .catch(err => {                      this.loading = false, console.log(err), this.toast.error('Схоже відбулась помилка, можливо користувач з таким імям вже існує ('+err+')')})}
-                else {
-                this.toast(" Відбулась помилка, введіть валідні данні або спробуйте пізніше")
-                }
-            },
+                    .catch(err => {                      this.loading = false, console.log(err), this.toast.error('Схоже відбулась помилка, можливо користувач з таким імям вже існує ('+err+')')})},
+
 
             async loadListCountries() {
                 axios({url: this.$store.state.backendUrl+`api/v1/city?limit=100&search=`, method: 'GET',headers: {'Content-type': 'application/json',}}).then(response => {this.cities  = response.data

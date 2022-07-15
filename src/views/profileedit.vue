@@ -234,7 +234,7 @@ import Editor from '@ckeditor/ckeditor5-simple-build';
                     ]
                 },
                 simpleUpload: {// The URL that the images are uploaded to.
-                    uploadUrl: 'http://localhost:8000/api/v1/upload_img/none/',
+                    uploadUrl: '',
                     // Enable the XMLHttpRequest.withCredentials property.withCredentials: false,
                 }
             },
@@ -251,6 +251,8 @@ import Editor from '@ckeditor/ckeditor5-simple-build';
             this.loadUser()
             this.loadListCities()
             this.loadListRegions()
+                              this.editorConfig.simpleUpload.uploadUrl=this.$store.state.backendUrl+'api/v1/upload_img/none/'
+
         },
 
       methods: {cropImage() {
