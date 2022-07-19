@@ -1,7 +1,8 @@
 <template>
   <div style="height: 100%" id="app">
     <div style="height: 100%" id="nav">
-    <Nav />
+      <Nav v-if="!isMobile()"/>
+    <NewNav v-if="isMobile()" />
     </div>
     <router-view/>
     <Footer />
@@ -24,12 +25,13 @@
 </style>
 <script>
 
-    import Nav from "./components/Nav.vue";
     import Footer from "./components/Footer.vue";
         import {useToast} from "vue-toastification";
+    import NewNav from "@/components/NewNav";
+    import Nav from "@/components/Nav";
 
     export default {
-        components: {Nav,Footer},
+        components: {NewNav,Nav,Footer},
         data() {
             return {
                           toast : useToast()
@@ -47,7 +49,13 @@ created() {
                				var token =  this.$store.state.access
 								 await this.$store.dispatch('set_user',  token)
 						.catch(err => {console.log(err)})
-			 }
+			 }, isMobile() {
+   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+     return true
+   } else {
+     return false
+   }
+ }
 				},
     }
 </script>

@@ -60,6 +60,8 @@
     </div>
   </div>
   </div>
+<!--        <VueSidebarMenuAkahon />-->
+
 </template>
 
 <script>
@@ -71,10 +73,11 @@
       document.body.classList.remove('loaded_hiding');
     }, 500);
   }
+  import VueSidebarMenuAkahon from "vue-sidebar-menu-akahon";
 
   export default {
 
-    components:{'font-awesome-icon': FontAwesomeIcon},
+    components:{'font-awesome-icon': FontAwesomeIcon,VueSidebarMenuAkahon},
 
     data(){return{}
     },

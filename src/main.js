@@ -25,7 +25,7 @@ const access = localStorage.getItem('access')
 if (access) {
   app.config.globalProperties.$http.defaults.headers.common['Authorization'] = "JWT " + access
     }
-    app.AOS = new AOS.init({ });
+    app.AOS = new AOS.init({ disable: "phone" });
 const options = {
     position: POSITION.TOP_LEFT
 };
