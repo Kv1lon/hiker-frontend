@@ -30,7 +30,7 @@
     activate(){
 			                  const formData = new FormData();
                                       formData.append("uid", this.uid);
-                                      formData.append("token", this.slug);
+                                      formData.append("token","JWT"+ this.slug);
                                       this.loading =true,
               axios({url:  this.$store.state.backendUrl+`auth/users/activation/`,data:formData, method: 'POST',headers: {'Content-type': 'application/json',}}).then(response => {
                 this.loading= false

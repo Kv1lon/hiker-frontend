@@ -40,19 +40,19 @@
     </div>
   </div>
 
-  <div v-if="popular[0]" id="portfoliowrap">
-    <h3>Популярне</h3>
+  <div v-if="popular[0]" id="portfoliowrap" style="padding-top: 0;margin-bottom: ">
+    <h3 style="color:#384452;">Популярне</h3>
     <div class="portfolio-centered">
       <div class="recentitems portfolio">
-        <div  v-for="post in popular" :key="post.id"  class="portfolio-item graphic-design">
+        <div  v-for="post in popular" :key="post.id"  class="portfolio-item graphic-design" >
           <div class="he-wrap tpl6">
             <div class="he-view">
               <div  class="bg a0">
-                <div data-aos="fade-in" data-aos-delay="300">
+                <div style="padding: 2%"  data-aos="fade-in" data-aos-delay="300">
                 <h3 class="a1" data-animate="fadeInDown">{{post.title}}</h3>
                 <img style="max-height: 25vh" :src="post.img" alt="">
                 <a data-rel="prettyPhoto" href="" @click.prevent="goTo('post',{slug:post.slug})" class="dmbutton a2" data-animate="fadeInUp">
-                  <div style="font-weight: bold">Перейти</div>
+                  <div style="font-weight: bold;margin-bottom: 3%">Перейти</div>
                   <div> <font-awesome-icon :icon="['far', 'clock']" />  {{post.date }}
                     <font-awesome-icon :icon="['far', 'user']" />{{post.author}}
                     <font-awesome-icon :icon="['far', 'comment']" />{{post.comments.length}}
@@ -71,13 +71,12 @@
     <div class="container centered">
       <div class="row">
         <div data-aos="zoom-in" data-aos-delay="300" class="col-lg-8 col-lg-offset-2">
-          <h3>Пошук білетів</h3>
-          <div class="hline"></div>
+          <h3 style="margin-bottom: 5%;margin-top: 0">Пошук білетів</h3>
           <h4>Звідки</h4>
             <div class="form-group">
               <div class="form-group">
-                   <Multiselect :close-on-select="true" :searchable="true" v-model="orl" :options="op" >       <template v-slot:tag="{ option, handleTagRemove, disabled }">
-                        <div class="multiselect-tag is-user">
+                   <Multiselect   :close-on-select="true" :searchable="true" v-model="orl" :options="op" placeholder="Оберіть аеропорт" >       <template v-slot:tag="{ option, handleTagRemove, disabled }">
+                        <div  class="multiselect-tag">
                             {{ option.value }}
                             <i v-if="!disabled" @click.prevent @mousedown.prevent.stop="handleTagRemove(option, $event)"></i>
                         </div>
@@ -86,8 +85,8 @@
 </div>
     <h4>Куди</h4>
             <div class="form-group">
-                   <Multiselect :close-on-select="true" :searchable="true" v-model="del" :options="op" >       <template v-slot:tag="{ option, handleTagRemove, disabled }">
-                        <div class="multiselect-tag is-user">
+                   <Multiselect :close-on-select="true" :searchable="true" v-model="del" :options="op" placeholder="Оберіть аеропорт" >       <template v-slot:tag="{ option, handleTagRemove, disabled }">
+                        <div class="multiselect-tag ">
                             {{ option.value }}
                             <i v-if="!disabled" @click.prevent @mousedown.prevent.stop="handleTagRemove(option, $event)"></i>
                         </div>
@@ -98,20 +97,17 @@
 
                 <v-date-picker mode="dateTime" :is24hr="true" :timezone="timezone" :minute-increment="5"  :model-config="modelConfig"  class="btn" v-model="forward"  > <template v-slot="{ inputValue, togglePopover }">
       <div class="form-group">
-        <button
+        <button style="font-weight: bold"
           @click="togglePopover()"
                     class="form-control "
 
         >
+          Обрати дату
           <font-awesome-icon :icon="['far', 'calendar-alt']" />
+          {{inputValue}}
 
         </button>
-        <input
-          :value="inputValue"
-                    class="form-control "
 
-          readonly
-        />
       </div>
     </template></v-date-picker>
     <h4>Назад(Не обовязково)</h4>
@@ -119,17 +115,15 @@
 
                 <v-date-picker mode="dateTime" :is24hr="true" :timezone="timezone"  :minute-increment="5" :model-config="modelConfig"  class="btn " v-model="back" ><template v-slot="{ inputValue, togglePopover }">
       <div class="form-group">
-        <button
+        <button style="font-weight: bold"
           @click="togglePopover()"
           class="form-control "
         >
+          Обрати дату
           <font-awesome-icon :icon="['far', 'calendar-alt']" />
+          {{inputValue}}
         </button>
-        <input
-          :value="inputValue"
-          readonly
-          class="form-control"
-        />
+
       </div>
     </template></v-date-picker>
           <h4>Пасажири</h4>
@@ -142,12 +136,11 @@
               <vue-number-input class="form-control" v-model="baby" :min="0" :max="adult"  controls></vue-number-input>
 </div>
                    <h4>Клас</h4>
-          <div class="btn btn-theme">Эконом <input type="radio" v-model="trip_class " name="popular" value="E"/></div>
-          <div class="btn btn-theme">Преміум-эконом <input type="radio" v-model="trip_class " name="popular" value="PE"/></div>
-          <div class="btn btn-theme" >Бізнес <input type="radio" name="popular"  v-model="trip_class " value="B"/></div>
-          <div class="btn btn-theme" >Перший <input type="radio" name="popular"  v-model="trip_class " value="F"/></div>
-          <div><button @click.prevent="searchTickets"  class="btn btn-block btn-success">Знайти білети</button></div>
-          <div class="hline"></div>
+          <label for="E" class="btn btn-theme">Эконом <input type="radio" v-model="trip_class " id="E" name="popular" value="E" /></label>
+          <label for="PE" class="btn btn-theme">Преміум-эконом <input type="radio" v-model="trip_class " id="PE" name="popular" value="PE"/></label>
+          <label for="B" class="btn btn-theme" >Бізнес <input type="radio" name="popular" id="B" v-model="trip_class " value="B"/></label>
+          <label for="F" class="btn btn-theme" >Перший <input type="radio" name="popular" id="F"  v-model="trip_class " value="F"/></label>
+          <div><button @click.prevent="searchTickets" style="font-size: 15pt"  class="btn btn-block btn-success ">Знайти білети</button></div>
         </div>
 
       </div>
@@ -400,6 +393,8 @@ if (access) {
 .btn{
   margin: 1%;
 }
+h4,h3{color: white;
+}
   .preloader {
     position: fixed;
     left: 0;
@@ -410,7 +405,9 @@ if (access) {
     background: #fff;
     z-index: 1001;
   }
-
+input{
+  background-color: white;
+}
   .preloader__image {
     position: relative;
     top: 50%;
@@ -431,4 +428,6 @@ if (access) {
   .loaded .preloader {
     opacity: 50%;
   }
-</style>єхїж
+
+
+</style>
