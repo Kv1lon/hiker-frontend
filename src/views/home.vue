@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <div v-if="popular[0]" id="portfoliowrap" style="padding-top: 0;margin-bottom: ">
+  <div v-if="popular[0]" id="portfoliowrap" style="padding-top: 0;margin-bottom: 0">
     <h3 style="color:#384452;">Популярне</h3>
     <div class="portfolio-centered">
       <div class="recentitems portfolio">
@@ -150,7 +150,7 @@
   <div id="cwrap">
     <div class="container">
       <div class="row centered">
-        <h3>Топ авторів</h3>
+        <h3 style="color:rgb(56, 68, 82);">Топ авторів</h3>
         <div data-aos="zoom-in" data-aos-delay="300"  v-for="author in popular_authors" :key="author.id" class="col-lg-3 col-md-3 co l-sm-3" @click.prevent="goTo('profile',{slug:author.slug})">
           <img v-if="author.profile_img" :src="author.profile_img" style="border-radius: 100px;" alt="Admin" class="rounded-circle" width="150">
           <img v-else src="https://secure.gravatar.com/avatar/c9877cc06c704dbe1dd3d4f305cb22d6?s=650&d=mm&r=g" style="border-radius: 100px;" alt="Admin" class="rounded-circle" width="150">

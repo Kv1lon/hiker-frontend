@@ -42,7 +42,7 @@
                   </a>
                 </li>
                 <li class="dropdown__menu-item">
-                  <a @click.prevent="goTo('blog',null)" href="#" class="dropdown__menu-link" title="Звязок">
+                  <a @click.prevent="goTo('contacts ',null)" href="#" class="dropdown__menu-link" title="Звязок">
                     <div class="dropdown__menu-svg">
 <font-awesome-icon :icon="['fas', 'phone']" />
                     </div>

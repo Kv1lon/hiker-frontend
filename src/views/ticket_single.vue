@@ -109,7 +109,7 @@
 			</form></div>
 
 
-<vue-final-modal v-model="show_s" :drag="true" :resize="true" :keep-changed-style="true" :esc-to-close="true"  :resize-directions="['t', 'tr', 'r', 'br', 'b', 'bl', 'l', 'tl']"
+<vue-final-modal v-model="show_s"  :resize="true" :keep-changed-style="true" :esc-to-close="true"  :resize-directions="['t', 'tr', 'r', 'br', 'b', 'bl', 'l', 'tl']"
  classes="modal-container" content-class="modal-content">
 <font-awesome-icon  class="modal__close" @click="show_s = false" :icon="['fas', 'times']"  />
         <span class="modal__title"><h3>Обрати білети</h3></span>
@@ -167,7 +167,7 @@
 
 
   <div>
-    <vue-final-modal v-model="show" :drag="true" :resize="true" :keep-changed-style="true" :esc-to-close="true"  :resize-directions="['t', 'tr', 'r', 'br', 'b', 'bl', 'l', 'tl']"
+    <vue-final-modal v-model="show"  :resize="true" :keep-changed-style="true" :esc-to-close="true"  :resize-directions="['t', 'tr', 'r', 'br', 'b', 'bl', 'l', 'tl']"
  classes="modal-container" content-class="modal-content">
 <font-awesome-icon  class="modal__close" @click="show = false" :icon="['fas', 'times']"  />
         <span class="modal__title"><h3>Пошук білетів</h3></span>
