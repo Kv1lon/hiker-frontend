@@ -1,5 +1,3 @@
-# The first instruction is what image we want to base our container on
-# We Use an official Python runtime as a parent image
 FROM node:12.16.1
 
 # The enviroment variable ensures that the python output is set straight
@@ -9,13 +7,14 @@ FROM node:12.16.1
 # Set the working directory to /drf
 # NOTE: all the directives that follow in the Dockerfile will be executed in
 # that directory.
+
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 # Install any needed packages specified in requirements.txt
 #RUN npm install
-
 COPY . /app
+#RUN npm install --save ckeditor5-simple-build.tar.gz
 CMD npm run serve
 #EXPOSE 8080
 

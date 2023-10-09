@@ -14,11 +14,18 @@ import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import VCalendar from 'v-calendar';
 import { vfmPlugin } from 'vue-final-modal'
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 //import 'v-calendar/dist/style.css';
 
 
 library.add(faHome,faPhone,faBriefcase,faIdCard,faSignInAlt,faUserPlus,faSignOutAlt,faArrowAltCircleDown,faArrowAltCircleUp,faClipboard,faPlaneDeparture,faTicketAlt,faPen,faTimes,faUser,faComment,faHeart,faEye,faClock,faNewspaper, faCalendarAlt)
-
+const vuetify = createVuetify({
+  components,
+  directives,
+})
 const app = createApp(App)
 app.config.globalProperties.$http = axios;
 const access = localStorage.getItem('access')
@@ -34,4 +41,4 @@ app.use(router).use(store).use(Toast, options).use(vfmPlugin({
   key: '$vfm',
   componentName: 'VueFinalModal',
   dynamicContainerName: 'ModalsContainer'
-})).use( CKEditor ).use(VCalendar).mount('#app')
+})).use( CKEditor ).use(vuetify).use(VCalendar).mount('#app')

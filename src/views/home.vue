@@ -95,7 +95,7 @@
         <h4>Коли</h4>
 
 
-                <v-date-picker mode="dateTime" :is24hr="true" :timezone="timezone" :minute-increment="5"  :model-config="modelConfig"  class="btn" v-model="forward"  > <template v-slot="{ inputValue, togglePopover }">
+                <v-date-picker style="display:inline-block;" mode="dateTime" :is24hr="true" :timezone="timezone" :minute-increment="5"  :model-config="modelConfig"  class="btn" v-model="forward"  > <template v-slot="{ inputValue, togglePopover }">
       <div class="form-group">
         <button style="font-weight: bold"
           @click="togglePopover()"
@@ -113,7 +113,7 @@
     <h4>Назад(Не обовязково)</h4>
 
 
-                <v-date-picker mode="dateTime" :is24hr="true" :timezone="timezone"  :minute-increment="5" :model-config="modelConfig"  class="btn " v-model="back" ><template v-slot="{ inputValue, togglePopover }">
+                <v-date-picker style="display:inline-block" mode="dateTime" :is24hr="true" :timezone="timezone"  :minute-increment="5" :model-config="modelConfig"  class="btn " v-model="back" ><template v-slot="{ inputValue, togglePopover }">
       <div class="form-group">
         <button style="font-weight: bold"
           @click="togglePopover()"
@@ -128,19 +128,19 @@
     </template></v-date-picker>
           <h4>Пасажири</h4>
           <div class="btn btn-theme">Дорослі
-              <vue-number-input class="form-control" v-model="adult" :min="1" :max="9-teen"  controls></vue-number-input>
+              <vue-number-input  class="form-control" v-model="adult" :min="1" :max="9-teen"  controls></vue-number-input>
 </div>
           <div class="btn btn-theme" >Діти
               <vue-number-input class="form-control" v-model="teen" :min="0" :max="9-adult"  controls></vue-number-input></div>
               <div class="btn btn-theme" >Немовля
-              <vue-number-input class="form-control" v-model="baby" :min="0" :max="adult"  controls></vue-number-input>
+              <vue-number-input class="form-control" v-model="baby" :min="0"  :max="adult"  controls></vue-number-input>
 </div>
                    <h4>Клас</h4>
           <label for="E" class="btn btn-theme">Эконом <input type="radio" v-model="trip_class " id="E" name="popular" value="E" /></label>
           <label for="PE" class="btn btn-theme">Преміум-эконом <input type="radio" v-model="trip_class " id="PE" name="popular" value="PE"/></label>
           <label for="B" class="btn btn-theme" >Бізнес <input type="radio" name="popular" id="B" v-model="trip_class " value="B"/></label>
           <label for="F" class="btn btn-theme" >Перший <input type="radio" name="popular" id="F"  v-model="trip_class " value="F"/></label>
-          <div><button @click.prevent="searchTickets" style="font-size: 15pt"  class="btn btn-block btn-success ">Знайти білети</button></div>
+          <div style="align-items: center"><button @click.prevent="searchTickets" style="font-size: 15pt;text-align: center;"  class="btn  btn-success ">Знайти білети</button></div>
         </div>
 
       </div>
@@ -167,14 +167,16 @@
     import Pagination from "../components/Pagination";
     import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   import Multiselect from "@vueform/multiselect";
-import VueNumberInput from '@chenfengyuan/vue-number-input';
+ import VueNumberInput from '@chenfengyuan/vue-number-input';
   import f from "./airport.csv"
   import md from "./flightsearch.md"
   import {useToast} from "vue-toastification";
+import '@mdi/font/css/materialdesignicons.css'
+  import { VDatePicker } from 'vuetify/labs/VDatePicker'
 
   export default {
     name: 'home',
-    components:{Pagination,'font-awesome-icon': FontAwesomeIcon,Multiselect,VueNumberInput,},
+    components:{Pagination,'font-awesome-icon': FontAwesomeIcon,Multiselect,VueNumberInput,VDatePicker},
 
     data: () => ({
       popular: [],
@@ -395,6 +397,12 @@ if (access) {
 }
 h4,h3{color: white;
 }
+.multiselect-tag{
+  margin:5px
+}
+    .multiselect-clear {
+        background-color: transparent !important;
+    }
   .preloader {
     position: fixed;
     left: 0;
@@ -408,6 +416,7 @@ h4,h3{color: white;
 input{
   background-color: white;
 }
+.btn{width: 200px}
   .preloader__image {
     position: relative;
     top: 50%;

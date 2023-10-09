@@ -4,7 +4,7 @@
     </div>
 </div>
 
-  <div style="margin-bottom:70px">
+  <div >
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
