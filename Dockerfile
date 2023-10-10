@@ -1,4 +1,4 @@
-FROM node:12.16.1
+FROM node:18
 
 # The enviroment variable ensures that the python output is set straight
 # to the terminal with out buffering it first
