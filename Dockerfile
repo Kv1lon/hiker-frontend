@@ -33,7 +33,7 @@ RUN mkdir -p /etc/nginx/conf.d
 COPY --from=build-stage /temp/prod.conf /etc/nginx/conf.d/default.conf
 
 # Copy your Vue.js build
-COPY --from=build-stage /app_maks/dist /usr/share/nginx/html
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
