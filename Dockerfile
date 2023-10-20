@@ -15,7 +15,7 @@ COPY package.json /app/package.json
 #RUN npm install
 COPY . /app
 #RUN npm install --save ckeditor5-simple-build.tar.gz
-RUN npm run build
+#RUN npm run build
 #EXPOSE 8080
 
 #CMD python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
