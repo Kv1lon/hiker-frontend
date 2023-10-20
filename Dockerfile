@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18-alpine as build-stage
 
 # The enviroment variable ensures that the python output is set straight
 # to the terminal with out buffering it first
@@ -20,3 +20,20 @@ CMD npm run build
 
 #CMD python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
 # CMD ["%%CMD%%"]
+# Copy the Nginx configuration
+COPY .docker/nginx/prod.conf /temp/prod.conf
+
+# Production Stage
+FROM nginx:stable-alpine as production-stage
+
+# Create the conf.d directory
+RUN mkdir -p /etc/nginx/conf.d
+
+# Copy your Nginx configuration
+COPY --from=build-stage /temp/prod.conf /etc/nginx/conf.d/default.conf
+
+# Copy your Vue.js build
+COPY --from=build-stage /app_maks/dist /usr/share/nginx/html
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
