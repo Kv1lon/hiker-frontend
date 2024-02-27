@@ -60,43 +60,22 @@
                     </Multiselect></div>
         <h4>Коли</h4>
 
-
-                <v-date-picker mode="dateTime" :is24hr="true" :timezone="timezone" :minute-increment="5"  :model-config="modelConfig"  class="btn" v-model="forward"  > <template v-slot="{ inputValue, togglePopover }">
-      <div class="form-group">
-        <button
-          @click="togglePopover()"
-                    class="form-control "
-
-        >
+                      <button style="font-weight: bold"
+          @click="showDatePickerTo = !showDatePickerTo"
+          class="form-control "
+        >          Обрати дату
           <font-awesome-icon :icon="['far', 'calendar-alt']" />
-
         </button>
-        <input
-          :value="inputValue"
-                    class="form-control "
-
-          readonly
-        />
-      </div>
-    </template></v-date-picker>
+                <v-date-picker data-aos="zoom-in" mode="dateTime" v-if="showDatePickerTo" style="display:inline-block" :is24hr="true" :timezone="timezone" :minute-increment="5"  :model-config="modelConfig"  class="btn" v-model="forward"  > </v-date-picker>
     <h4>Назад(Не обовязково)</h4>
 
-
-                <v-date-picker mode="dateTime" :is24hr="true" :timezone="timezone"  :minute-increment="5" :model-config="modelConfig"  class="btn " v-model="back" ><template v-slot="{ inputValue, togglePopover }">
-      <div class="form-group">
-        <button
-          @click="togglePopover()"
+                      <button style="font-weight: bold"
+          @click="showDatePickerFrom = !showDatePickerFrom"
           class="form-control "
-        >
+        >          Обрати дату
           <font-awesome-icon :icon="['far', 'calendar-alt']" />
         </button>
-        <input
-          :value="inputValue"
-          readonly
-          class="form-control"
-        />
-      </div>
-    </template></v-date-picker>
+                <v-date-picker data-aos="zoom-in" mode="dateTime" v-if="showDatePickerFrom" style="display:inline-block" :is24hr="true" :timezone="timezone" :minute-increment="5"  :model-config="modelConfig"  class="btn" v-model="back"  > </v-date-picker>
           <h4>Пасажири</h4>
           <div class="btn btn-theme">Дорослі
               <vue-number-input class="form-control" v-model="adult" :min="1" :max="9-teen"  controls></vue-number-input>
@@ -157,9 +136,10 @@ import VueNumberInput from '@chenfengyuan/vue-number-input';
   import f from "./airport.csv"
   import {useToast} from "vue-toastification";
   import md from "./flightsearch.md"
+  import {VDatePicker} from "vuetify/lib/labs/VDatePicker";
   export default {
     name: 'tickets',
-    components:{Pagination,'font-awesome-icon': FontAwesomeIcon,Multiselect,VueNumberInput,},
+    components:{Pagination,'font-awesome-icon': FontAwesomeIcon,Multiselect,VueNumberInput,VDatePicker},
     data: () => ({
       listPosts: [],
         popular:[],
@@ -171,15 +151,17 @@ import VueNumberInput from '@chenfengyuan/vue-number-input';
         adult:1,
         teen:0,
         baby:0,
-        forward:'',
-        back:'',
-        trip_class :'',
-show:false,
-                timezone:"UTC",
+        show:false,
+      showDatePickerTo: false,
+      showDatePickerFrom:false,
+              forward:"",
+        back:"",
+      trip_class :'',
+        timezone:"UTC",
               modelConfig: {
         type: 'string',
         mask: 'YYYY-MM-DD hh:mm:ss',
-                        timeAdjust: '24:00:00',
+                        timeAdjust: '24:00:00'
 
       },
       orl:"",
@@ -239,7 +221,6 @@ var ops = []
             else {
             this.orl = "ADZ"
                 this.del = "AQP"
-                this.forward ="2022-08-17 12:00:00"
                 this.trip_class="E"
                 this.searchTickets()
         } },

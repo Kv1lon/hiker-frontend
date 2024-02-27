@@ -94,38 +94,23 @@
                     </Multiselect></div>
         <h4>Коли</h4>
 
-
-                <v-date-picker style="display:inline-block;" mode="dateTime" :is24hr="true" :timezone="timezone" :minute-increment="5"  :model-config="modelConfig"  class="btn" v-model="forward"  > <template v-slot="{ inputValue, togglePopover }">
-      <div class="form-group">
-        <button style="font-weight: bold"
-          @click="togglePopover()"
-                    class="form-control "
-
-        >
-          Обрати дату
+                        <button style="font-weight: bold"
+          @click="showDatePickerFrom = !showDatePickerFrom"
+          class="form-control "
+        >          Обрати дату
           <font-awesome-icon :icon="['far', 'calendar-alt']" />
-          {{inputValue}}
-
         </button>
-
-      </div>
-    </template></v-date-picker>
+                <v-date-picker  mode="dateTime" data-aos="zoom-in" v-if="showDatePickerFrom" style="display:inline-block" :is24hr="true" :timezone="timezone" :minute-increment="5"  :model-config="modelConfig"  class="btn" v-model="forward"  > </v-date-picker>
     <h4>Назад(Не обовязково)</h4>
 
-
-                <v-date-picker style="display:inline-block" mode="dateTime" :is24hr="true" :timezone="timezone"  :minute-increment="5" :model-config="modelConfig"  class="btn " v-model="back" ><template v-slot="{ inputValue, togglePopover }">
-      <div class="form-group">
-        <button style="font-weight: bold"
-          @click="togglePopover()"
+                        <button style="font-weight: bold"
+          @click="showDatePickerTo = !showDatePickerTo"
           class="form-control "
         >
           Обрати дату
           <font-awesome-icon :icon="['far', 'calendar-alt']" />
-          {{inputValue}}
         </button>
-
-      </div>
-    </template></v-date-picker>
+                <v-date-picker data-aos="zoom-in" v-if="showDatePickerTo" style="display:inline-block" mode="dateTime" :is24hr="true" :timezone="timezone"  :minute-increment="5" :model-config="modelConfig"  class="btn " v-model="back" ></v-date-picker>
           <h4>Пасажири</h4>
           <div class="btn btn-theme">Дорослі
               <vue-number-input  class="form-control" v-model="adult" :min="1" :max="9-teen"  controls></vue-number-input>
@@ -182,6 +167,8 @@ import '@mdi/font/css/materialdesignicons.css'
       popular: [],
       popular_authors: [],
       followers_count:null,
+      showDatePickerTo:false,
+      showDatePickerFrom:false,
       cur_user:{},
         adult:1,
         teen:0,
@@ -193,11 +180,11 @@ import '@mdi/font/css/materialdesignicons.css'
               modelConfig: {
         type: 'string',
         mask: 'YYYY-MM-DD hh:mm:ss',
-                        timeAdjust: '24:00:00',
+                        timeAdjust: '24:00:00'
 
       },
-      orl:"",
-      del:"",
+      orl:null,
+      del:null,
         op:{},
         arar:{},
                     toast : useToast(),

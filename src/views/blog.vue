@@ -78,7 +78,7 @@
           <h4>По популярності:</h4>
           <div class="btn btn-theme">По спаданню <font-awesome-icon :icon="['far', 'arrow-alt-circle-down']" /> <input type="radio" v-model="pop_filter" name="popular" value="descending"/></div>
           <div class="btn btn-theme" >По зростанню <font-awesome-icon :icon="['far', 'arrow-alt-circle-up']" /> <input type="radio" name="popular"  v-model="pop_filter" value="ascending"/></div>
-          <button type="submit" class="btn btn-theme">Фільтрувати</button>
+          <button type="submit" class="btn btn-theme" style="color:white">Фільтрувати</button>
           <div class="hline"></div>
         </form>
         <h4>Популярні пости</h4>

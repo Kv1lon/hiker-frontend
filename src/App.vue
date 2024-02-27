@@ -1,6 +1,6 @@
 <template>
-  <div style="height: 100%" id="app">
-    <div style="height: 100%" id="nav">
+  <div id="app">
+    <div id="nav">
       <Nav v-if="!isMobile()"/>
     <NewNav v-if="isMobile()" />
     </div>

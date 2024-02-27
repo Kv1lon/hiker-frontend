@@ -17,9 +17,9 @@
             <li class="nav-item">
               <a class="nav-link" href="" @click.prevent="goTo('blog',null)"><font-awesome-icon :icon="['far', 'newspaper']" /></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="" @click.prevent="goTo('tickets')"><font-awesome-icon :icon="['fas', 'ticket-alt']" /></a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="" @click.prevent="goTo('tickets')"><font-awesome-icon :icon="['fas', 'ticket-alt']" /></a>-->
+<!--            </li>-->
 
             <li class="nav-item"><a  href="" @click.prevent="goTo('contacts',null)"><font-awesome-icon :icon="['fas', 'phone']" /> </a></li>
             <li v-if="!isLoggedIn"><a  href="" @click.prevent="goTo('registration',null)"><font-awesome-icon :icon="['fas', 'user-plus']"/> </a></li>
@@ -46,9 +46,9 @@
             <li v-if="isLoggedIn" ><a  href="" @click.prevent="goTo('cabinet',{slug:$store.state.cuser.slug})"><font-awesome-icon :icon="['fas', 'clipboard']" /> Мої статті</a></li>
             <li v-if="isLoggedIn" ><a  href="" @click.prevent="goTo('panel',null)"><font-awesome-icon :icon="['fas', 'briefcase']" /> Робочий кабінет</a></li>
 
-                        <li class="nav-item">
-              <a class="nav-link" href="" @click.prevent="goTo('tickets',)"><font-awesome-icon :icon="['fas', 'ticket-alt']" /> Білети</a>
-            </li>
+<!--                        <li class="nav-item">-->
+<!--              <a class="nav-link" href="" @click.prevent="goTo('tickets',)"><font-awesome-icon :icon="['fas', 'ticket-alt']" /> Білети</a>-->
+<!--            </li>-->
             <li v-if="isLoggedIn" ><a  href="" @click.prevent="goTo('tickets_cabinet',{slug:$store.state.cuser.slug})"><font-awesome-icon :icon="['fas', 'plane-departure']" /> Мої билети</a></li>
 
             <li v-if="!isLoggedIn"><a  href="" @click.prevent="goTo('registration',null)"><font-awesome-icon :icon="['fas', 'user-plus']"/> Реєстрація</a></li>
