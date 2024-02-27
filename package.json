@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build"
+    "build": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build --mode development"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
